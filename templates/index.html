@@ -1,0 +1,216 @@
+
+{% extends "layout.html" %}
+
+{% block title %}Campus Connect - Home{% endblock %}
+
+{% block content %}
+<div class="flex flex-col min-h-screen">
+    <!-- Navigation -->
+    <header class="border-b">
+        <div class="container flex items-center justify-between h-16 px-4 md:px-6">
+            <div class="flex items-center gap-2">
+                <i class="fas fa-school text-primary-orange"></i>
+                <span class="text-xl font-bold">Campus Connect</span>
+            </div>
+            <nav class="hidden md:flex items-center gap-6">
+                <a href="#" class="text-sm font-medium hover:text-primary-orange transition-colors">Home</a>
+                <a href="#features" class="text-sm font-medium hover:text-primary-orange transition-colors">Features</a>
+                <a href="#about" class="text-sm font-medium hover:text-primary-orange transition-colors">About</a>
+            </nav>
+            <div class="flex items-center gap-4">
+                <a href="{{ url_for('login') }}" class="btn btn-outline">Login</a>
+                <a href="{{ url_for('signup') }}" class="btn btn-primary">Sign Up</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="py-20 md:py-32 bg-gradient-to-b from-white to-primary-light/20">
+        <div class="container px-4 md:px-6">
+            <div class="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
+                <div class="space-y-4">
+                    <h1 class="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+                        Connect with Students & Campuses
+                    </h1>
+                    <p class="text-gray-600 md:text-xl">
+                        Campus Connect brings together students from different colleges creating opportunities for collaboration, 
+                        networking, and discovering campus events across institutions.
+                    </p>
+                    <div class="flex flex-col gap-2 min-[400px]:flex-row">
+                        <a href="{{ url_for('signup') }}" class="btn btn-primary">
+                            Get Started
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <a href="#features" class="btn btn-outline">Learn More</a>
+                    </div>
+                </div>
+                <div class="mx-auto lg:mx-0 rounded-lg overflow-hidden border shadow-xl">
+                    <img
+                        alt="Campus Connect"
+                        class="aspect-video w-full object-cover"
+                        src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=2000&auto=format&fit=crop"
+                    >
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-20 bg-white" id="features">
+        <div class="container px-4 md:px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold tracking-tighter">Key Features</h2>
+                <p class="text-gray-600 md:text-lg mt-2">
+                    Discover what makes Campus Connect the perfect platform for students and institutions
+                </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="feature-card">
+                    <i class="fas fa-users text-primary-orange mb-4"></i>
+                    <h3 class="text-xl font-medium mb-2">Student Profiles</h3>
+                    <p class="text-center text-gray-600">
+                        Create your student profile, showcase your experiences, and connect with peers from different colleges.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-school text-primary-orange mb-4"></i>
+                    <h3 class="text-xl font-medium mb-2">Campus Management</h3>
+                    <p class="text-center text-gray-600">
+                        Institutions can share their profile, manage events, and connect with registered students.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-file-alt text-primary-orange mb-4"></i>
+                    <h3 class="text-xl font-medium mb-2">Resume Builder</h3>
+                    <p class="text-center text-gray-600">
+                        Create professional resumes showcasing your skills and experiences with our built-in tools.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-search text-primary-orange mb-4"></i>
+                    <h3 class="text-xl font-medium mb-2">Search & Discover</h3>
+                    <p class="text-center text-gray-600">
+                        Find other students, campuses, and events easily with our powerful search functionality.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-calendar text-primary-orange mb-4"></i>
+                    <h3 class="text-xl font-medium mb-2">Campus Events</h3>
+                    <p class="text-center text-gray-600">
+                        Discover and participate in events hosted by various institutions across the platform.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-school text-primary-orange mb-4"></i>
+                    <h3 class="text-xl font-medium mb-2">Dual Accounts</h3>
+                    <p class="text-center text-gray-600">
+                        Choose your identity - register as a student or as a campus representative with specialized features.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="py-20 bg-primary-light/30" id="about">
+        <div class="container px-4 md:px-6">
+            <div class="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
+                <div class="mx-auto lg:mx-0 rounded-lg overflow-hidden">
+                    <img
+                        alt="About Campus Connect"
+                        class="aspect-video object-cover rounded-lg"
+                        src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=2000&auto=format&fit=crop"
+                    >
+                </div>
+                <div class="space-y-4">
+                    <h2 class="text-3xl font-bold tracking-tighter">About Campus Connect</h2>
+                    <p class="text-gray-700">
+                        Campus Connect was founded with a simple yet powerful vision: to break down the walls between educational institutions 
+                        and create a unified network where students can connect, collaborate, and grow together.
+                    </p>
+                    <p class="text-gray-700">
+                        Our platform helps students discover opportunities across campuses, while giving institutions a modern way to 
+                        showcase their unique culture, events, and student community to a wider audience.
+                    </p>
+                    <p class="text-gray-700">
+                        Join us in reimagining how students and institutions connect in the digital age.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-white">
+        <div class="container px-4 md:px-6">
+            <div class="flex flex-col items-center justify-center space-y-4 text-center">
+                <div class="space-y-2">
+                    <h2 class="text-3xl font-bold tracking-tighter sm:text-4xl">Ready to Connect?</h2>
+                    <p class="text-gray-600 max-w-[600px] mx-auto">
+                        Join thousands of students and institutions already on Campus Connect and start building your network today.
+                    </p>
+                </div>
+                <div class="flex flex-col gap-2 min-[400px]:flex-row">
+                    <a href="{{ url_for('signup') }}" class="btn btn-primary">Sign Up Now</a>
+                    <a href="{{ url_for('login') }}" class="btn btn-outline">Login</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t bg-secondary-black text-white">
+        <div class="container px-4 md:px-6 py-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <div class="flex items-center gap-2">
+                        <i class="fas fa-school text-primary-orange"></i>
+                        <span class="text-xl font-bold text-white">Campus Connect</span>
+                    </div>
+                    <p class="mt-2 text-gray-400">
+                        Connecting students across campuses for a better educational ecosystem.
+                    </p>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="space-y-2">
+                        <h4 class="text-sm font-medium text-primary-orange">Platform</h4>
+                        <ul class="space-y-1 text-sm text-gray-400">
+                            <li><a href="#" class="hover:text-white">Features</a></li>
+                            <li><a href="#" class="hover:text-white">Security</a></li>
+                            <li><a href="#" class="hover:text-white">Privacy</a></li>
+                        </ul>
+                    </div>
+                    <div class="space-y-2">
+                        <h4 class="text-sm font-medium text-primary-orange">Support</h4>
+                        <ul class="space-y-1 text-sm text-gray-400">
+                            <li><a href="#" class="hover:text-white">Help</a></li>
+                            <li><a href="#" class="hover:text-white">FAQ</a></li>
+                            <li><a href="#" class="hover:text-white">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="space-y-2">
+                    <h4 class="text-sm font-medium text-primary-orange">Stay Connected</h4>
+                    <p class="text-sm text-gray-400">Subscribe to our newsletter for updates</p>
+                    <form class="flex space-x-2">
+                        <input
+                            class="flex-1 px-3 py-2 bg-secondary-light text-white rounded-md"
+                            placeholder="Email address"
+                            type="email"
+                        >
+                        <button class="btn btn-primary">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-6 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-xs text-gray-400">© 2025 Campus Connect. All rights reserved.</p>
+                <div class="flex space-x-4">
+                    <a href="#" class="text-gray-400 hover:text-white">Terms</a>
+                    <a href="#" class="text-gray-400 hover:text-white">Privacy</a>
+                    <a href="#" class="text-gray-400 hover:text-white">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+{% endblock %}

@@ -1,0 +1,214 @@
+
+{% extends "layout.html" %}
+
+{% block title %}Student Dashboard - Campus Connect{% endblock %}
+
+{% block content %}
+<div class="min-h-screen bg-primary-light/10 flex">
+    <!-- Sidebar -->
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <div class="flex items-center gap-2">
+                <i class="fas fa-school text-primary-orange"></i>
+                <span class="font-semibold">Campus Connect</span>
+            </div>
+        </div>
+        
+        <div class="sidebar-content">
+            <ul class="sidebar-menu">
+                <li class="sidebar-item active">
+                    <a href="{{ url_for('student_dashboard') }}" class="sidebar-link">
+                        <i class="fas fa-home"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="{{ url_for('student_profile') }}" class="sidebar-link">
+                        <i class="fas fa-user"></i>
+                        <span>Profile</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="{{ url_for('resume_builder') }}" class="sidebar-link">
+                        <i class="fas fa-file-alt"></i>
+                        <span>Resume Builder</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link">
+                        <i class="fas fa-search"></i>
+                        <span>Explore</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link">
+                        <i class="fas fa-bell"></i>
+                        <span>Notifications</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link">
+                        <i class="fas fa-cog"></i>
+                        <span>Settings</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="sidebar-footer">
+            <a href="{{ url_for('logout') }}" class="sidebar-link">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Logout</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main content -->
+    <div class="flex-1 ml-0 lg:ml-64 min-h-screen">
+        <!-- Header -->
+        <header class="sticky top-0 bg-white border-b px-4 py-3 flex items-center justify-between gap-4 z-10">
+            <div class="flex gap-3 items-center lg:hidden">
+                <i class="fas fa-school text-primary-orange"></i>
+                <span class="font-semibold">Campus Connect</span>
+            </div>
+            
+            <div class="flex-1 max-w-md hidden sm:block">
+                <div class="relative">
+                    <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground"></i>
+                    <input 
+                        placeholder="Search students, campuses, events..." 
+                        class="form-input pl-10 bg-gray-50"
+                    >
+                </div>
+            </div>
+            
+            <div class="flex items-center gap-2">
+                <button class="btn-icon btn-ghost relative">
+                    <i class="fas fa-bell"></i>
+                    <span class="notification-badge"></span>
+                </button>
+                <button class="btn-icon btn-ghost rounded-full overflow-hidden">
+                    <img 
+                        src="https://randomuser.me/api/portraits/men/32.jpg"
+                        alt="Profile"
+                        class="w-full h-full object-cover"
+                    >
+                </button>
+            </div>
+        </header>
+
+        <!-- Dashboard content -->
+        <div class="p-4 lg:p-6">
+            <h1 class="text-2xl font-semibold mb-6">Student Dashboard</h1>
+
+            <!-- Quick actions -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+                <div class="card border-l-4 border-l-primary-orange">
+                    <div class="card-body p-4 flex gap-4 items-center">
+                        <div class="bg-primary-light/50 p-3 rounded-full">
+                            <i class="fas fa-search text-primary-orange"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm text-muted">Quick Action</p>
+                            <p class="font-medium">Search Campus Events</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card border-l-4 border-l-primary-orange">
+                    <div class="card-body p-4 flex gap-4 items-center">
+                        <div class="bg-primary-light/50 p-3 rounded-full">
+                            <i class="fas fa-school text-primary-orange"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm text-muted">Quick Action</p>
+                            <p class="font-medium">Browse Campuses</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card border-l-4 border-l-primary-orange">
+                    <div class="card-body p-4 flex gap-4 items-center">
+                        <div class="bg-primary-light/50 p-3 rounded-full">
+                            <i class="fas fa-bell text-primary-orange"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm text-muted">Quick Action</p>
+                            <p class="font-medium">Check Notifications</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card border-l-4 border-l-primary-orange">
+                    <div class="card-body p-4 flex gap-4 items-center">
+                        <div class="bg-primary-light/50 p-3 rounded-full">
+                            <i class="fas fa-search text-primary-orange"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm text-muted">Quick Action</p>
+                            <p class="font-medium">Find Other Students</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Upcoming events section -->
+            <h2 class="text-xl font-semibold mb-4">Upcoming Events</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+                {% for event in events %}
+                <div class="card overflow-hidden">
+                    <div class="aspect-video w-full bg-gray-100 relative">
+                        <img 
+                            src="{{ event.image }}"
+                            alt="{{ event.title }}"
+                            class="w-full h-full object-cover"
+                        >
+                        <div class="absolute top-2 right-2 bg-primary-orange text-white text-xs font-medium px-2 py-1 rounded">
+                            {{ event.type }}
+                        </div>
+                    </div>
+                    <div class="card-header p-4">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="card-title text-lg">{{ event.title }}</h3>
+                            <span class="text-xs bg-muted px-2 py-1 rounded">{{ event.date }}</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-sm text-muted mb-2">
+                            <i class="fas fa-school"></i>
+                            <span>{{ event.campus }}</span>
+                        </div>
+                        <p class="text-sm">{{ event.description }}</p>
+                        <div class="mt-3">
+                            <button class="btn btn-outline border-primary-orange text-primary-orange hover:bg-primary-orange hover:text-white w-full">
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+            <!-- Featured campuses section -->
+            <h2 class="text-xl font-semibold mb-4">Featured Campuses</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                {% for campus in campuses %}
+                <div class="card overflow-hidden">
+                    <div class="aspect-video w-full bg-gray-100">
+                        <img 
+                            src="{{ campus.image }}"
+                            alt="{{ campus.name }}"
+                            class="w-full h-full object-cover"
+                        >
+                    </div>
+                    <div class="card-body p-4">
+                        <h3 class="font-medium">{{ campus.name }}</h3>
+                        <p class="text-sm text-muted mb-3">
+                            {{ campus.focus }}
+                        </p>
+                        <button class="btn btn-outline border-primary-orange text-primary-orange hover:bg-primary-orange hover:text-white w-full">
+                            View Profile
+                        </button>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
